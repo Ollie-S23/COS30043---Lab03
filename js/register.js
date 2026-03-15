@@ -20,6 +20,11 @@ Vue.createApp({
                 return self.eventObj.category === "All" || eventItem.category === self.eventObj.category;
             });
             
+        },
+
+        selectedEventName: function () {
+            var event = this.events.find(e => e.eventid === this.eventObj.selectedEvent);
+            return event ? event.eventname : '';
         }
     },
 

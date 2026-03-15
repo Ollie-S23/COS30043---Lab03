@@ -28,7 +28,7 @@
             <div class="d-flex flex-wrap align-items-center mb-3">
                 <div class="d-flex align-items-center me-3 mb-2">
                     <label for="rName" class="me-2">Enter user name: </label>
-                    <input type="password" id="rName" v-model="eventObj.rName" class="form-control" style="width: 150px;"/>
+                    <input type="text" id="rName" v-model="eventObj.rName" class="form-control" style="width: 150px;"/>
                 </div>
                 <div class="d-flex align-items-center me-3 mb-2">
                     <label for="rPW" class="me-2">Enter password: </label>
@@ -36,7 +36,7 @@
                 </div>
                 <div class="d-flex align-items-center mb-2">
                     <label for="rPWd" class="me-2">Re-enter password: </label>
-                    <input type="text" id="rPWd" v-model="eventObj.rPWd" class="form-control" style="width: 150px;"/>
+                    <input type="password" id="rPWd" v-model="eventObj.rPWd" class="form-control" style="width: 150px;"/>
                 </div>
             </div>
             <div class="container">
@@ -74,12 +74,23 @@
             </div>
             <div class="container">
                 <div class="row">
-                    <h2>Summary</h2>
-                    <ul>
-                        <!-- <li>Username: {{username}}</li>
-                        <li>Category: {{category}}</li>
-                        <li>Event Name: {{event.eventname}}</li> -->
-                    </ul>
+                            <!-- rName is there   rPW is there    rPWd is there     if selectedEvent has been chosen  if rPw and rPwd are equal -->
+                    <div v-if="eventObj.rName  && eventObj.rPW && eventObj.rPWd &&  eventObj.selectedEvent &&        eventObj.rPW === eventObj.rPWd">
+                        <h2>Summary</h2>
+                        <ul>
+                            <li>Username: {{eventObj.rName}}</li>
+                            <li>Category: {{eventObj.category}}</li>
+                            <li>Event Name: {{selectedEventName}}</li>
+                        </ul>
+                    </div>
+                    <div v-else>
+                        <h2>Summary</h2>
+                        <ul>
+                            <li>Username: </li>
+                            <li>Category: </li>
+                            <li>Event Name: </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
